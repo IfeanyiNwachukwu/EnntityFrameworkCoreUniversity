@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfCore_DbLibrary", "EfCore_DbLibrary\EfCore_DbLibrary.csproj", "{B6A61700-28AB-46A2-9BD2-4E3AD3B2BA58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.ReverseEngineer", "02.ReverseEngineer", "{1D0C4D26-AA0B-4401-AA18-E47D74BE48BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleReverseEngineer", "..\..\02.Existing_Databases\ReverseEngineer\ReverseConsolas\ConsoleReverseEngineer\ConsoleReverseEngineer.csproj", "{94B18AFD-874E-49A2-A520-8159C77E2562}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchemaLibrary", "..\..\02.Existing_Databases\Schema_DbLibrary\SchemaLibrary\SchemaLibrary.csproj", "{88ADB487-6AF0-449F-B11B-1A00E41F35BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "..\..\02.Existing_Databases\ReverseEngineer\ReverseConsolas\ReverseConsole\ConsoleApp1\ConsoleApp1.csproj", "{B9D421D1-8BF3-433D-BBAD-B7B6D5251790}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6A61700-28AB-46A2-9BD2-4E3AD3B2BA58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6A61700-28AB-46A2-9BD2-4E3AD3B2BA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6A61700-28AB-46A2-9BD2-4E3AD3B2BA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6A61700-28AB-46A2-9BD2-4E3AD3B2BA58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94B18AFD-874E-49A2-A520-8159C77E2562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94B18AFD-874E-49A2-A520-8159C77E2562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94B18AFD-874E-49A2-A520-8159C77E2562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94B18AFD-874E-49A2-A520-8159C77E2562}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88ADB487-6AF0-449F-B11B-1A00E41F35BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88ADB487-6AF0-449F-B11B-1A00E41F35BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88ADB487-6AF0-449F-B11B-1A00E41F35BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88ADB487-6AF0-449F-B11B-1A00E41F35BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9D421D1-8BF3-433D-BBAD-B7B6D5251790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D421D1-8BF3-433D-BBAD-B7B6D5251790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D421D1-8BF3-433D-BBAD-B7B6D5251790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D421D1-8BF3-433D-BBAD-B7B6D5251790}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{94B18AFD-874E-49A2-A520-8159C77E2562} = {1D0C4D26-AA0B-4401-AA18-E47D74BE48BD}
+		{B9D421D1-8BF3-433D-BBAD-B7B6D5251790} = {1D0C4D26-AA0B-4401-AA18-E47D74BE48BD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E9BB58E-3339-439A-AA7C-EE48754543C5}
+	EndGlobalSection
+EndGlobal
