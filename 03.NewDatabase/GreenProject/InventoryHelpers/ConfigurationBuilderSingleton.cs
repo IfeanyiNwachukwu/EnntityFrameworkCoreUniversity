@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace EFCoreGreenConsole
+namespace InventoryHelpers
 {
     public sealed class ConfigurationBuilderSingleton
     {

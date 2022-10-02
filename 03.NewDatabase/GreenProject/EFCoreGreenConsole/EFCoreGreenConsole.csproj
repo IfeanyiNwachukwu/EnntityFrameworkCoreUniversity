@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EFGreen_DbLibrary\EFGreen_DbLibrary\EFGreen_DbLibrary.csproj" />
+    <ProjectReference Include="..\InventoryHelpers\InventoryHelpers.csproj" />
   </ItemGroup>
 
 </Project>

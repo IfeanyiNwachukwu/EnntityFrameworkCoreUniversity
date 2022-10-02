@@ -1,7 +1,8 @@
 ﻿
 
-using EFCoreGreenConsole;
+
 using EFGreen_DbLibrary;
+using InventoryHelpers;
 using InventoryModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

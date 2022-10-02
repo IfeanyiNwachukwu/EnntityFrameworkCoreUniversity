@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFGreen_DbLibrary", "EFGreen_DbLibrary\EFGreen_DbLibrary.csproj", "{8E826A8C-8017-4F1A-B363-41D288EAD385}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFGreen_DbLibrary", "EFGreen_DbLibrary\EFGreen_DbLibrary.csproj", "{8E826A8C-8017-4F1A-B363-41D288EAD385}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreGreenConsole", "..\EFCoreGreenConsole\EFCoreGreenConsole.csproj", "{C72ADDA2-B1E1-4B26-9AEF-6B18B4374E82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreGreenConsole", "..\EFCoreGreenConsole\EFCoreGreenConsole.csproj", "{C72ADDA2-B1E1-4B26-9AEF-6B18B4374E82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryModels", "..\InventoryModels\InventoryModels.csproj", "{193DBD16-EEDE-411F-A88A-A5D3872CF7FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryModels", "..\InventoryModels\InventoryModels.csproj", "{193DBD16-EEDE-411F-A88A-A5D3872CF7FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryHelpers", "..\InventoryHelpers\InventoryHelpers.csproj", "{939ADC68-2EBF-4985-96C7-A08A89CBBD26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{193DBD16-EEDE-411F-A88A-A5D3872CF7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{193DBD16-EEDE-411F-A88A-A5D3872CF7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{193DBD16-EEDE-411F-A88A-A5D3872CF7FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{939ADC68-2EBF-4985-96C7-A08A89CBBD26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{939ADC68-2EBF-4985-96C7-A08A89CBBD26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{939ADC68-2EBF-4985-96C7-A08A89CBBD26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{939ADC68-2EBF-4985-96C7-A08A89CBBD26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
