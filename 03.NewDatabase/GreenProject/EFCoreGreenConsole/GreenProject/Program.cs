@@ -1,16 +1,12 @@
-﻿
-
-
-using EFGreen_DbLibrary;
-using InventoryHelpers;
-using InventoryModels;
+﻿using DbLibrary;
+using InventoryHelper;
+using InventoryModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-
 Program1.BuildOptions();
 Program1.EnsureItems();
-Program1.DeletallItems()
+Program1.DeleteAllItems();
 //InventoryDbContext.DisplayConnectionString();
 public static class Program1
 {
@@ -18,13 +14,13 @@ public static class Program1
 
     private static DbContextOptionsBuilder<InventoryDbContext> _optionsBuilder;
 
-   
+
 
     public static void BuildOptions()
     {
         _configuration = ConfigurationBuilderSingleton.ConfigurationRoot;
         _optionsBuilder = new DbContextOptionsBuilder<InventoryDbContext>();
-        _optionsBuilder.UseSqlServer(_configuration.GetConnectionString("InventoryManager"));
+        _optionsBuilder.UseSqlServer(_configuration.GetConnectionString("AuthInventoryManager"));
 
     }
 
@@ -48,9 +44,9 @@ public static class Program1
         }
     }
 
-    private static void DeleteAllItems()
+    public static void DeleteAllItems()
     {
-        using(var db = new InventoryDbContext(_optionsBuilder.Options))
+        using (var db = new InventoryDbContext(_optionsBuilder.Options))
         {
             var items = db.Items.ToList();
             db.Items.RemoveRange(items);
@@ -68,7 +64,7 @@ public static class Program1
 
     public static void ListInventory()
     {
-        using(var db = new InventoryDbContext(_optionsBuilder.Options))
+        using (var db = new InventoryDbContext(_optionsBuilder.Options))
         {
             var items = db.Items.OrderBy(x => x.Name).ToList();
 
