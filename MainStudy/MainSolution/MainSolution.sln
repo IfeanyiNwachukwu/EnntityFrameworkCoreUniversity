@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryHelpers", "Invento
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryModels", "InventoryModels", "{81C7CDC2-FD4A-454B-87B3-04BE86759582}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryModel", "InventoryModel\InventoryModel\InventoryModel.csproj", "{FB7F8076-AB1A-4C11-9A39-FAD4FC96F5B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryModel", "InventoryModel\InventoryModel\InventoryModel.csproj", "{FB7F8076-AB1A-4C11-9A39-FAD4FC96F5B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryHelper", "InventoryHelpers\InventoryHelper\InventoryHelper.csproj", "{7EBF73FD-419E-4FA4-AEFF-785C6B56A362}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryHelper", "InventoryHelpers\InventoryHelper\InventoryHelper.csproj", "{7EBF73FD-419E-4FA4-AEFF-785C6B56A362}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbLibrary", "EfGreen_DbLibrary\DbLibrary\DbLibrary.csproj", "{5154BBA9-DD56-4538-A52D-B7E4789DC5A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbLibrary", "EfGreen_DbLibrary\DbLibrary\DbLibrary.csproj", "{5154BBA9-DD56-4538-A52D-B7E4789DC5A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenProject", "..\..\03.NewDatabase\GreenProject\EFCoreGreenConsole\GreenProject\GreenProject.csproj", "{1350D003-FA5A-4937-A5DA-B9C2DDFE79E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenProject", "..\..\03.NewDatabase\GreenProject\EFCoreGreenConsole\GreenProject\GreenProject.csproj", "{1350D003-FA5A-4937-A5DA-B9C2DDFE79E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

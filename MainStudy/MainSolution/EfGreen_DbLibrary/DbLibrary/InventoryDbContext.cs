@@ -11,6 +11,7 @@ namespace DbLibrary
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CategoryDetail> CategoryDetails { get; set; }
+        public virtual DbSet<Genre> Genres { get; set; }
         // Default constructor for when scaffolding is needed
         public InventoryDbContext()
         {
