@@ -6,7 +6,7 @@ namespace InventoryModel
     {
         [Required]
         [StringLength(InventoryModelsConstants.MAX_NAME_LENGTH)]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         public virtual List<ItemGenre> GenreItems { get; set; } = new List<ItemGenre>();
     }

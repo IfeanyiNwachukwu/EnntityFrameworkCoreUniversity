@@ -1,4 +1,5 @@
 ﻿using InventoryModel;
+using InventoryModel.DTOs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -12,6 +13,12 @@ namespace DbLibrary
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CategoryDetail> CategoryDetails { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
+        public virtual DbSet<GetItemsForListingDto> ItemsForListing { get; set; }
+        public virtual DbSet<AllItemsPipeDelimitedStringDTO> AllItemsOutput { get; set; }
+        public virtual DbSet<GetItemsTotalValueDTO> GetItemsTotalValues { get; set; }
+        public virtual DbSet<FullItemDetailDTO> FullItemDetailDTOs { get; set; }
+
+
         // Default constructor for when scaffolding is needed
         public InventoryDbContext()
         {
@@ -40,7 +47,7 @@ namespace DbLibrary
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Defining the May to any Relationship by overridig the OnModelCreate method
+            // Defining the Many to Many Relationship by overridig the OnModelCreate method
             modelBuilder.Entity<Item>()
                 .HasMany(x => x.Players)
                 .WithMany(p => p.Items)
@@ -59,6 +66,83 @@ namespace DbLibrary
                 .HasConstraintName("FK_PlayerItem_Items_ItemId")
                 .OnDelete(DeleteBehavior.ClientCascade)
                         );
+
+            modelBuilder.Entity<GetItemsForListingDto>(x =>
+            {
+                x.HasNoKey();
+                x.ToView("ItemsForListing");
+            });
+
+            modelBuilder.Entity<AllItemsPipeDelimitedStringDTO>(x =>
+            {
+                x.HasNoKey();
+                x.ToView("AllItemsOutput");
+            });
+
+            modelBuilder.Entity<GetItemsTotalValueDTO>(x =>
+            {
+                x.HasNoKey();
+                x.ToView("GetItemsTotalValues");
+            });
+
+            modelBuilder.Entity<FullItemDetailDTO>(x =>
+            {
+                x.HasNoKey();
+                x.ToView("FullItemDetailDTOs");
+            });
+
+            // Seed Data usig the FLUENT Api
+            var genreCreateDate = new DateTime(2021, 01, 01);
+            modelBuilder.Entity<Genre>(x =>
+            {
+                x.HasData(
+                new Genre()
+                {
+                    Id = 1,
+                    CreatedDate = genreCreateDate,
+                    IsActive =
+                true,
+                    IsDeleted = false,
+                    Name = "Fantasy"
+                },
+                new Genre()
+                {
+                    Id = 2,
+                    CreatedDate = genreCreateDate,
+                    IsActive =
+                true,
+                    IsDeleted = false,
+                    Name = "Sci/Fi"
+                },
+                new Genre()
+                {
+                    Id = 3,
+                    CreatedDate = genreCreateDate,
+                    IsActive =
+                true,
+                    IsDeleted = false,
+                    Name = "Horror"
+                },
+                new Genre()
+                {
+                    Id = 4,
+                    CreatedDate = genreCreateDate,
+                    IsActive =
+                true,
+                    IsDeleted = false,
+                    Name = "Comedy"
+                },
+                new Genre()
+                {
+                    Id = 5,
+                    CreatedDate = genreCreateDate,
+                    IsActive =
+                true,
+                    IsDeleted = false,
+                    Name = "Drama"
+                }
+                );
+            });
         }
 
         public override int SaveChanges()

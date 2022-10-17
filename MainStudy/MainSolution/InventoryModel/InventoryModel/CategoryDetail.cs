@@ -14,6 +14,9 @@ namespace InventoryModel
         [StringLength(InventoryModelsConstants.MAX_COLORVALUE_LENGTH)]
         public string ColorValue { get; set; }
 
+        [Required]
+        [StringLength(InventoryModelsConstants.MAX_COLORNAME_LENGTH)]
+        public string ColorName { get; set; }
         public virtual Category Category { get; set; }
     }
 }

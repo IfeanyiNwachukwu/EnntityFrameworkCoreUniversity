@@ -1,14 +1,19 @@
 ﻿using DbLibrary;
 using InventoryHelper;
 using InventoryModel;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 Program1.BuildOptions();
-Program1.EnsureItems();
-Program1.UpdateItems();
+//Program1.EnsureItems();
+//Program1.UpdateItems();
+//Program1.GetItemsForListig();
 //Program1.DeleteAllItems();
 //InventoryDbContext.DisplayConnectionString();
+//Program1.GetAllActiveItemsAsPipeDelimitedString();
+//Program1.GetItemsTotalValues();
+Program1.GetFullItemDetails();
 public static class Program1
 {
     private static IConfigurationRoot _configuration;
@@ -43,7 +48,7 @@ public static class Program1
                 Name = name,
                 CreatedByUserId = _loggedInUserId,
                 IsActive = true,
-                Quantity = r.Next(1,1000),
+                Quantity = r.Next(1, 1000),
                 Description = description,
                 Notes = notes
             };
@@ -95,6 +100,82 @@ public static class Program1
             var items = db.Items.OrderBy(x => x.Name).ToList();
 
             items.ForEach(x => Console.WriteLine($"New Item: {x.Name}"));
+        }
+    }
+
+    public static void GetItemsForListig()
+    {
+        using (var db = new InventoryDbContext(_optionsBuilder.Options))
+        {
+            var results = db.ItemsForListing.FromSqlRaw("EXECUTE dbo.GetItemsForListing").ToList();
+
+            foreach (var item in results)
+            {
+                var output = $"ITEM {item.Name}] {item.Description}";
+
+                if (string.IsNullOrWhiteSpace(item.CategoryName))
+                {
+                    output = $"{output} has category: {item.CategoryName}";
+                }
+                Console.WriteLine(output);
+            }
+        }
+    }
+
+    public static void GetAllActiveItemsAsPipeDelimitedString()
+    {
+        using (var db = new InventoryDbContext(_optionsBuilder.Options))
+        {
+            var isActiveParam = new SqlParameter("IsActive", 1);
+
+            var result = db.AllItemsOutput.FromSqlRaw(
+
+                "SELECT [dbo].[ItemNamesPipeDelimitedString](@IsActive)AllItems", isActiveParam
+
+
+                ).FirstOrDefault();
+
+            Console.WriteLine($"All active Items: {result.AllItems}");
+        }
+
+    }
+
+    public static void GetItemsTotalValues()
+    {
+        using (var db = new InventoryDbContext(_optionsBuilder.Options))
+        {
+            var isActiveParm = new SqlParameter("IsActive", 1);
+            var result = db.GetItemsTotalValues
+            .FromSqlRaw("SELECT * from [dbo]. [GetItemsTotalValue](@IsActive)", isActiveParm).ToList();
+            foreach (var item in result)
+            {
+                Console.WriteLine($"New Item] {item.Id,-10}" +
+                $"|{item.Name,-50}" +
+                $"|{item.Quantity,-4}" +
+               
+                $"|{item.TotalValue,-5}");
+            }
+        }
+    }
+
+    public static void GetFullItemDetails()
+    {
+        using(var db = new InventoryDbContext(_optionsBuilder.Options))
+        {
+            var result = db.FullItemDetailDTOs.FromSqlRaw("SELECT * FROM" +
+                "[dbo].[vwFullItemDetails]" +
+                "ORDER BY ItemName,GenreName," +
+                "Category,PlayerName").ToList();
+
+            foreach(var item in result)
+            {
+                Console.WriteLine($"New Item] {item.Id,-10}" +
+                                    $"|{item.ItemName,-50}" +
+                                    $"|{item.ItemDescription,-4}" +
+                                    $"|{item.PlayerName,-5}" +
+                                    $"|{item.Category,-5}" +
+                                    $"|{item.GenreName,-5}");
+            }
         }
     }
 }

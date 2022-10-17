@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 
 Program1.BuildOptions();
 Program1.EnsureItems();
-Program1.DeletallItems()
+Program1.DeleteAllItems(); 
 //InventoryDbContext.DisplayConnectionString();
 public static class Program1
 {
