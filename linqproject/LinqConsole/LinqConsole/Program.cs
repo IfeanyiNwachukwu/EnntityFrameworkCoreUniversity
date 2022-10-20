@@ -1,4 +1,5 @@
 ﻿using EFDbLibrary;
+using EFDbLibrary.DTOs;
 using InventoryHelpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,7 +18,8 @@ public class Program
         // FilteredAndPagedResult("Ma", 1, 50);
         // ListAllSalespeople();
         //ShowAllSalespeopleUsingProjection();
-        GenerateSalesReportData();
+       // GenerateSalesReportData(20);
+        GenerateSalesReportDataToDTO();
     }
     static void BuildOptions()
     {
@@ -213,6 +215,47 @@ public class Program
                 $"{string.Join(',', srd.Territories)} |" +
                 $"Order Count: {srd.OrderCount} |" +
                 $"Products Sold: {srd.TotalProductsSold}");
+            }
+        }
+    }
+
+    private static void GenerateSalesReportDataToDTO()
+    {
+        Console.WriteLine("What is the minimum amount of sales");
+        var input = Console.ReadLine();
+        decimal filter = 0.0m;
+
+        if(!decimal.TryParse(input,out filter))
+        {
+            Console.WriteLine("Bad input");
+            return;
+        }
+        using (var db = new AdventureWorks2019Context(_optionsBuilder.Options))
+        {
+            var salesReportData = db.SalesPeople
+                .Select(sp => new SalesReportListingDTO
+                {
+                    BusinessEntityId = sp.BusinessEntityId,
+                    FirstName = sp.BusinessEntity.BusinessEntity.FirstName,
+                    LastName = sp.BusinessEntity.BusinessEntity.LastName,
+                    SalesYtd = sp.SalesYtd,
+                    Territories = sp.SalesTerritoryHistories
+                    .Select(y => y.Territory.Name),
+                    TotalOrders = sp.SalesOrderHeaders.Count(),
+                    TotalProductsSold = sp.SalesOrderHeaders
+                    .SelectMany(y => y.SalesOrderDetails)
+                    .Sum(z => z.OrderQty)
+
+                }
+             ).Where(srdata => srdata.SalesYtd > filter)
+             .OrderBy(srds => srds.LastName)
+             .ThenBy(srds => srds.FirstName)
+             .ThenByDescending(srds => srds.SalesYtd)
+             .ToList();
+
+            foreach (var srd in salesReportData)
+            {
+                Console.WriteLine(srd.ToString());
             }
         }
     }
