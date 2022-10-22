@@ -152,7 +152,7 @@ public static class Program1
                 Console.WriteLine($"New Item] {item.Id,-10}" +
                 $"|{item.Name,-50}" +
                 $"|{item.Quantity,-4}" +
-               
+
                 $"|{item.TotalValue,-5}");
             }
         }
@@ -160,14 +160,14 @@ public static class Program1
 
     public static void GetFullItemDetails()
     {
-        using(var db = new InventoryDbContext(_optionsBuilder.Options))
+        using (var db = new InventoryDbContext(_optionsBuilder.Options))
         {
             var result = db.FullItemDetailDTOs.FromSqlRaw("SELECT * FROM" +
                 "[dbo].[vwFullItemDetails]" +
                 "ORDER BY ItemName,GenreName," +
                 "Category,PlayerName").ToList();
 
-            foreach(var item in result)
+            foreach (var item in result)
             {
                 Console.WriteLine($"New Item] {item.Id,-10}" +
                                     $"|{item.ItemName,-50}" +
